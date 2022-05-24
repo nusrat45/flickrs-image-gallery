@@ -1,0 +1,35 @@
+.image-list-holder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    width: calc(100% - 100px);
+    margin: 0px auto;
+}
+
+.image-holder {
+    //background-color: #2b3743;
+    //padding: 0px 0px 30px 0px;
+    cursor: pointer;
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+// .country__details {
+//     margin: 0px 20px;
+// }
+
+// .country__population,
+// .country__region,
+// .country__capital {
+//     font-size: 13px;
+//     font-family: revert;
+//     margin: 2px auto;
+// }
+
+// .country__name {
+//     margin: 10px 0px 20px 0px;
+// }
