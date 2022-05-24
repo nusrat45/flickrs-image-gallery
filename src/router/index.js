@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ImageDetailsView from '../views/ImageDetailsView.vue'
+import NotFoundPageView from '../views/NotFoundPageView.vue'
 
 const routes = [
   {
@@ -14,14 +15,25 @@ const routes = [
     component: ImageDetailsView,
     props: true
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+
+  //Redirect to Home page
+  {
+    path: '/images',
+    redirect: '/'
+  },
+
+  {
+    path: '/all-images',
+    redirect: '/'
+  },
+  
+  // 404 page
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFoundPageView',
+    component: NotFoundPageView,
+  },
+
 ]
 
 const router = createRouter({

@@ -1,26 +1,17 @@
 <template lang="">
-    <div className="country-details">
+    <div className="image-details">
         <router-link to="/"><div className="back-btn">Back</div></router-link>
-        <div className="country-details__main-content">
-            <img className="country-details__img" :src="imageInfo.imgSrc"/>
-            <div className="country-details__text">
-                <h2></h2>
-                <div className="country-details__country-properties">
-                    <div className="country-details__country-properties-left">
-                        <div className="country-details__country-property">Title: {{imageInfo.title}}</div>
-                        <div className="country-details__country-property">description: {{imageInfo.author_id}}</div>
-                        <div className="country-details__country-property">published: {{imageInfo.published}}</div>
-                        <div className="country-details__country-property">author: {{imageInfo.author}}</div>
-                        <div className="country-details__country-property">date_taken: {{imageInfo.date_taken}}</div>
-                    </div>
-                    <!-- <div className="country-details__country-properties-right">
-                        <div className="country-details__country-property">Top Level Domain: </div>
-                        <div className="country-details__country-property">Currencies: </div>
-                        <div className="country-details__country-property">Languages: </div>
-                    </div> -->
+        <div className="image-details__main-content">
+            <img className="image-details__img" :src="imageInfo.imgSrc"/>
+            <div className="image-details__text">
+                <div className="image-details__image-properties">
+                        <h1 className="image-details__item">{{imageInfo.title}}</h1>
+                        <div className="image-details__item">Taken By: {{imageInfo.author}}</div>
+                        <div className="image-details__item">Published On: {{imageInfo.published}}</div>
+                        <div className="image-details__item">Date Taken: {{imageInfo.date_taken}}</div>
                 </div>
                 <div>
-                    <div className="country-details__country-property">Tags:  <span className="border-countries" v-for="tag in imageInfo.tags">{{tag}}</span></div>
+                    <div className="image-details__item">Tags:  <span className="image-details__tags" v-if="imageInfo.tags.length > 0" v-for="tag in imageInfo.tags">{{tag}}</span></div>
                 </div>
             </div>
         </div>
@@ -34,10 +25,10 @@ export default {
             imageInfo: {
                 imgSrc: this.$route.query.imgSrc,
                 title: this.$route.query.title,
-                published: this.$route.query.published,
+                published: new Date(this.$route.query.published).toLocaleDateString(),
                 author: this.$route.query.author,
-                date_taken: this.$route.query.date_taken,
-                tags: this.$route.query.tags.split(' ')
+                date_taken: new Date(this.$route.query.date_taken).toLocaleDateString(),
+                tags: this.$route.query.tags ? this.$route.query.tags.split(' ') : []
             }
         }
     }
