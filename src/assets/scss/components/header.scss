@@ -1,22 +1,33 @@
+@use '../base/variables' as var;
+
 .header {
     height: 50px;
-    background-color: #2b3743;
+    background-color: var.$squidink;
+
+    &__content {
+        width: calc(100% - 100px);
+        height: 100%;
+        margin: 0px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
-.header__content {
-    width: calc(100% - 100px);
-    height: 100%;
-    margin: 0px auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var.$squidink;
+
+    &__content {
+        width: calc(100% - 100px);
+        height: 100%;
+        margin: 0px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
-.header__mode-changer {
-    padding: 0px 15px 0px 0px;
-    font-size: 12px;
-}
-
-.header__mode-changer span {
-    margin: 0px 5px;
-}

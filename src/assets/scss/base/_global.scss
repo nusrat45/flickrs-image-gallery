@@ -1,0 +1,58 @@
+@use './variables' as var;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var.$gunmetal;
+    color: var.$white;
+}
+
+a {
+    color: var.$white;
+    text-decoration: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #475c70;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475c70;
+  }
+
+.is-hidden {
+    width: 0;
+    padding: 0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var.$squidink;
+    padding: 5px 20px;
+    margin: 10px 8px 0px;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        box-shadow: var.$hovshadow;
+    }
+}
+
+
+

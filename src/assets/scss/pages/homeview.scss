@@ -1,0 +1,18 @@
+.filter {
+    width: calc(100% - 100px);
+    margin: 30px auto 40px auto;
+    display: flex;
+    justify-content: space-between;
+
+    &__right-section {
+        display: flex;
+    }
+    
+}
+
+.filter__toggle-favorite-image {
+    display: flex;
+    width: calc(100% - 42px);
+    /* margin: 0 auto; */
+    place-content: flex-end;
+}

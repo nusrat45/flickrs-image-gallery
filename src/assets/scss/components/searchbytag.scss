@@ -1,0 +1,35 @@
+@use '../base/variables' as var;
+
+.search-by-tag {
+    // width: calc(100% - 100px);
+    display: flex;
+    flex-wrap: wrap;
+    color: var.$white;
+    border-radius: 5px;
+    line-height: 1.5;
+
+    &__input {
+        width: 170px;
+        padding: 0px 7px 0px;
+        height: 28px;
+        border: none;
+        transition: all 0.5s ease;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__add-tag-btn {
+        margin-left: 0;
+    }
+
+    .is-hidden {
+        width: 0;
+        padding: 0;
+    }
+
+    .is-checked {
+        background-color: #171717;
+    }
+}

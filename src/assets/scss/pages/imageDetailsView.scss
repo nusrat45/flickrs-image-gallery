@@ -1,11 +1,22 @@
+@use '../base/variables' as var;
+
 .image-details {
     width: calc(100% - 100px);
     margin: 10px auto;
     display: flex;
     flex-direction: column;
-    color: #e6e6e6;
+    color: var.$platinum;
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
+
+    .back-btn {
+        margin: 20px 0px;
+    }
+
+    a {
+        color: var.$white;
+        text-decoration: none;
+    }
 
     &__main-content {
         display: flex;
@@ -29,30 +40,6 @@
         
     &__item {
         margin: 5px 0px;
-    }
-    
-    &__tags {
-        display: inline-block;
-        background-color: #2b3743;
-        padding: 5px 20px;
-        margin: 10px 8px 0px;
-        font-size: 13px;
-    }
-
-    .back-btn {
-        background-color: #2b3743;
-        width: 100px;
-        height: 30px;
-        margin: 20px 0px;
-        text-align: center;
-        line-height: 2.1;
-        font-size: 13px;
-        cursor: pointer;
-        border-radius: 2px;
-    }
-    
-    .back-icon {
-        margin-right: 10px;  
     }
 }
 

@@ -1,0 +1,32 @@
+.sort-by-date {
+    &__dropdown {
+        position: absolute;
+        background-color: #2b3743;
+        margin: 3px 0px 0px 0px;
+        z-index: 1;
+        overflow: hidden;
+        padding-bottom: 0px;
+        border-radius: 3px;
+    } 
+
+    &__dropdown-list {
+        list-style: none;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    &__item {
+        font-size: 13px;
+        border-bottom: 1px solid #212e37;
+        padding: 10px 10px 10px 15px;
+        cursor: pointer;
+    }
+
+    .close {
+        display: none;
+    }
+}
+
+
+
