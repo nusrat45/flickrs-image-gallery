@@ -1,6 +1,17 @@
 <template>
     <div className="search-by-tag">
-        <span class="btn is-checked" @click="getImages">All Tags</span>
+        <!-- <span class="btn is-checked" @click="getImages">All Tags</span> -->
+        <!-- <Dropdown>
+            <option>All</option>
+            <option>Any</option>
+        </Dropdown> -->
+        <label class="custom-select">
+            <span>Tagmode: </span>
+            <select @change="getImagesOnTagMode($event)">
+                <option value="all">All</option>
+                <option value="any">Any</option>
+            </select>
+        </label>
         <span v-if="tags.length > 0">
             <span v-for="(tag, index) in tags" 
                 :key="index"
@@ -26,44 +37,50 @@
 </template>
 
 <script>
+import Dropdown from './Dropdown.vue';
 export default {
-    name: 'SearchByTag',
+    name: "SearchByTag",
     data() {
         return {
-            tagName: '',
+            tagName: "",
             isShow: false,
-        }
+            options: [
+                    {_title: 'All', _event: ['getImages']}, {_title: 'Any', _event:['getImages']}]
+        };
     },
-
     computed: {
         //All tags list
         tags() {
             return this.$store.state.tags;
         }
     },
-
     methods: {
         // Add new Tag click event function
         addNewTag() {
-            if(this.isShow && this.tagName) {
+            console.log('????')
+            if (this.isShow && this.tagName) {
                 let newTag = {
                     name: this.tagName,
                     isChecked: true
-                }
-                this.$store.dispatch('handleTags', newTag)
-                this.tagName = ''
+                };
+                this.$store.dispatch("handleTags", newTag);
+                this.tagName = "";
             }
         },
-
         // Check uncheck tag click event function
         toggleCheckedTag(event, currentTag) {
-            this.$store.dispatch('handleTags', currentTag)
+            console.log('????')
+            this.$store.dispatch("handleTags", currentTag);
         },
-
         // Get all images from api function
         getImages() {
-            this.$store.dispatch('getImages')
+            this.$store.dispatch("getImages");
+        },
+
+        getImagesOnTagMode(event) {
+            this.$store.dispatch("getImagesOnTagMode", event.target.value)
         }
-    }
+    },
+    components: { Dropdown }
 }
 </script>

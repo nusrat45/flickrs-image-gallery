@@ -30,3 +30,14 @@ export function arrayRemove(arr, ditem, objPropToCompare) {
     });
 
 }
+
+export function  findAndReplaceArrayOfObj(arr1, arr2, objProp) {
+    let newArr = []
+    newArr = arr1.map(itemA => {
+      let fullObj = arr2.find(itemB => itemB[objProp] === itemA[objProp]);
+      console.log('yeessssssssssssssssssss')
+      console.log(fullObj)
+      return fullObj ? fullObj : itemA;
+    });
+    return newArr;
+}

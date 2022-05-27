@@ -1,0 +1,39 @@
+@use '../base/variables' as var;
+
+label.custom-select {
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px 0px 0px;
+
+}
+
+.custom-select select {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    margin: 0;
+    font: inherit;
+    outline:none;
+    line-height: 1.2;
+    background: var.$squidink;
+    color:white;
+    border:0;
+}
+
+/* Select arrow styling */
+// .custom-select:after {
+//     content: "▼";
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     font-size: 60%;
+//     line-height: 30px;
+//     padding: 0 7px;
+//     background: var.$squidink;
+//     color: white;
+//     pointer-events: none;
+// }
+
+.no-pointer-events .custom-select:after {
+    content: none;
+}

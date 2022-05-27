@@ -11,7 +11,7 @@
                     <SortByDate />
                 </div>
             </div>
-            <ImageList :imageList="$store.state.allImageList"/>
+            <ImageList :imageList="$store.state.imageList"/>
         </main>
         <Footer />
     </div>
