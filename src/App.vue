@@ -1,13 +1,7 @@
 <template>
-  <div>
-    <!-- <nav> -->
-      <!-- <router-link to="/">Home</router-link> | -->
-      <!-- <router-link to="/about">About</router-link> -->
-    <!-- </nav> -->
+  <Fragment>
     <router-view />
-
-    <!-- <button @click="$store.dispatch('getImages')">call api</button> -->
-  </div>  
+  </Fragment>  
 </template>
 
 <script>
@@ -19,6 +13,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+  #app {
+    height: 100%;
+  }
 
 </style>

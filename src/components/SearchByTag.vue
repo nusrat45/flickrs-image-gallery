@@ -1,50 +1,69 @@
-<template lang="">
+<template>
     <div className="search-by-tag">
-        <span class="btn" @click="$store.dispatch('getImages')">All Tags</span>
-        <span class="btn" v-if="tags.length > 0" v-for="(tag, index) in tags" :class="isChecked && 'is-checked'" @click="isCheckedFun(index)">{{tag}}</span>
+        <span class="btn is-checked" @click="getImages">All Tags</span>
+        <span v-if="tags.length > 0">
+            <span v-for="(tag, index) in tags" 
+                :key="index"
+                class="btn" 
+                :class="tag.isChecked && 'is-checked'" 
+                @click="toggleCheckedTag($event, tag)"
+            >{{tag.name}}
+            </span>
+        </span>
         <div class="search-by-tag__add-tag">
-            <input :class="isShow ? '' : 'is-hidden'" type="text" class="search-by-tag__input" placeholder="Search By Tags..." id="search-intput" v-model.trim.lazy="tagName"/>
-            <span @click="[isShow = true, getTag()]" class="btn search-by-tag__add-tag-btn">+ Add Tag</span>
+            <input type="text"  
+                class="search-by-tag__input"  
+                :class="isShow ? '' : 'is-hidden'" 
+                v-model.trim.lazy="tagName" 
+                placeholder="Search By Tags..."
+            />
+            <span  @click="[isShow = true, addNewTag()]" 
+                class="btn search-by-tag__add-tag-btn"
+            >+ Add Tag
+            </span>
         </div>        
     </div> 
 </template>
 
 <script>
 export default {
-    name: 'Search',
+    name: 'SearchByTag',
     data() {
         return {
             tagName: '',
-            tags: [],
             isShow: false,
-            isChecked: true,
-            isChekcedList: []
+        }
+    },
+
+    computed: {
+        //All tags list
+        tags() {
+            return this.$store.state.tags;
         }
     },
 
     methods: {
-        getTag() {
-            console.log(this.isShow, this.tagName)
-            if(this.isShow && this.tagName && this.tags.indexOf(this.tagName) === -1) {
-                this.tags.push(this.tagName) 
-                //this.isShow = false
+        // Add new Tag click event function
+        addNewTag() {
+            if(this.isShow && this.tagName) {
+                let newTag = {
+                    name: this.tagName,
+                    isChecked: true
+                }
+                this.$store.dispatch('handleTags', newTag)
                 this.tagName = ''
             }
         },
 
-        isCheckedFun(index1) {
-            [index1] = !this.isChecked
-        }
-    },
+        // Check uncheck tag click event function
+        toggleCheckedTag(event, currentTag) {
+            this.$store.dispatch('handleTags', currentTag)
+        },
 
-    watch: {
-        tagParamter(newVaule, oldValue) {
-            
+        // Get all images from api function
+        getImages() {
+            this.$store.dispatch('getImages')
         }
     }
 }
 </script>
-
-<style lang="scss">
-
-</style>

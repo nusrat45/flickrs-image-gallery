@@ -1,35 +1,41 @@
 <template>
-    <div>
+    <Fragment>
         <Header />
-        <div class="filter__toggle-favorite-image">
-                    <div class="btn">
-                        <router-link to="/">All</router-link>|
-                        <router-link :to="{name: 'FavoriteImageView'}"><i class="fa fa-heart" aria-hidden="true"></i></router-link>
-                    </div>
-                    <!-- <div class="btn" @click="$store.commit('toggleImages', 'all')">all images</div>
-                    <div class="btn" @click="$store.commit('toggleImages', 'favorite')">favourite images</div> -->
+        <main class="main">
+            <div class="filter-sort">
+                <div class="filter-sort__filter">
+                    <FilterWithFav />
                 </div>
-        <ImageList v-if="$store.state.favoriteImageList.length > 0" :imageList="$store.state.favoriteImageList"/>
-        <div v-else>No Favorites Availabe</div>    
+            </div>
+            <ImageList :imageList="favoriteImageList"/>  
+        </main>
         <Footer />
-    </div>
+    </Fragment>
 </template>
 
 <script>
-import ImageList from '@/components/ImageList.vue';
 import Header from '@/components/Header.vue';
+import ImageList from '@/components/ImageList.vue';
 import SearchByTag from '@/components/SearchByTag.vue';
-import Footer from '@/components/Footer.vue';
 import SortByDate from '../components/SortByDate.vue';
+import FilterWithFav from '@/components/FilterWithFav.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
     name: "FavoriteImageView",
     components: {
-    ImageList,
-    Header,
-    SearchByTag,
-    Footer,
-    SortByDate
-}
+        ImageList,
+        Header,
+        SearchByTag,
+        Footer,
+        SortByDate,
+        FilterWithFav
+    },
+
+    computed: {
+        favoriteImageList() {
+            return this.$store.state.favoriteImageList;
+        }
+    }
 }
 </script>

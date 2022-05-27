@@ -5,7 +5,13 @@
     padding: 0;
 }
 
+html,
 body {
+  height: 100%;
+}
+
+body {
+    height: 100%;
     background-color: var.$gunmetal;
     color: var.$white;
 }
@@ -13,6 +19,10 @@ body {
 a {
     color: var.$white;
     text-decoration: none;
+}
+
+.main {
+  min-height: calc(100% - 110px);
 }
 
 /* width */
@@ -33,11 +43,6 @@ a {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #475c70;
-  }
-
-.is-hidden {
-    width: 0;
-    padding: 0;
 }
 
 .btn {

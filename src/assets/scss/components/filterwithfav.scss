@@ -1,0 +1,11 @@
+.filter-with-fav {
+    .btn {
+        margin: 10px 0px 0px 0px;
+        &:first-child {
+            border-right: 1px solid #212e37;
+        }
+        &:hover {
+            background-color: #4d777d;
+        }
+    }
+}

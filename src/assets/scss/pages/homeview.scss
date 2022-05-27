@@ -1,18 +1,11 @@
-.filter {
+.filter-sort {
     width: calc(100% - 100px);
-    margin: 30px auto 40px auto;
+    margin: 30px auto 0px auto;
     display: flex;
     justify-content: space-between;
 
-    &__right-section {
+    &__sort {
         display: flex;
     }
     
-}
-
-.filter__toggle-favorite-image {
-    display: flex;
-    width: calc(100% - 42px);
-    /* margin: 0 auto; */
-    place-content: flex-end;
 }

@@ -11,8 +11,8 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/images/:title',
-    name: 'ImageDetails',
+    path: '/images/:id',
+    name: 'imageDetails',
     component: ImageDetailsView,
     props: true
   },
