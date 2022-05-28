@@ -27,6 +27,3 @@ export default {
     components: { Dropdown }
 }
 </script>
-<style lang="">
-    
-</style>

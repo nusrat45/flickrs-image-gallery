@@ -6,9 +6,6 @@
 </template>
 <script>
 export default {
-    
+    name: 'FilterWithFav'
 }
 </script>
-<style lang="scss">
-    
-</style>

@@ -1,15 +1,6 @@
 <template lang="">
     <div class="loader">
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
-        <div class="loader__wave"></div>
+        <div v-for="index in 10" :key="index" class="loader__wave"></div>
     </div>
 </template>
 <script>

@@ -2,7 +2,6 @@
     <Fragment>
         <Header></Header>
         <main class="main">
-            <FallBack :customTitle="`Hmm!`" :customText="`It seems like you're lost.`"/>
             <FallBack>
                 <h1>Hmm!</h1>
                 <p>Look like you're lost.</p>

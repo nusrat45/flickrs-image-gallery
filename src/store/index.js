@@ -16,7 +16,6 @@ export default createStore({
     //Convert tags name array to string for tag query
     tagsParam: function(state) {
       let tags = [];
-      
       state.tags.map(function(item) {
         if(item.isChecked) {
           tags.push(item['name']);
@@ -27,6 +26,7 @@ export default createStore({
   },
 
   mutations: {
+    // Favourite images toggle
     handleFavouriteImages(state, image) {
       if(image.isFavourite) {
           state.favoriteImageList.push(image)
@@ -79,8 +79,6 @@ export default createStore({
         url = 'https://api.flickr.com/services/feeds/photos_public.gne?safe_search=1&format=json&nojsoncallback=1'
       }
 
-      console.log('url: ', url)
-
       axios(url)
       .then(response => context.state.allImageList = convertRawtoDefinedImageList(response.data.items))
       .then(() => context.state.imageList = findAndReplaceArrayOfObj(context.state.allImageList, context.state.favoriteImageList, 'id'))
@@ -88,7 +86,7 @@ export default createStore({
       .then(() => context.state.isLoading = false)
     },
 
-
+    // TagMode toggle with API Call
     getImagesOnTagMode(context, payload) {
       context.state.tagMode = payload
       context.dispatch("getImages", { tagmode: context.state.tagMode, tagparams: context.getters.tagparams});

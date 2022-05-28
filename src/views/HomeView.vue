@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <Fragment>
         <Header>
             <Dropdown :eventMethod="getImagesByLang">
                 <option value="en-us">English</option>
@@ -13,10 +13,10 @@
             </Dropdown>
         </Header>
         <main class="main">
-            <div v-if="isLoading">
+            <Fragment v-if="isLoading">
                 <Loader />
-            </div>
-            <div v-else>
+            </Fragment>
+            <Fragment v-else>
                 <SearchByTag />
                 <div class="filter-sort">
                     <div class="filter-sort__filter">
@@ -26,13 +26,11 @@
                         <SortByDate />
                     </div>
                 </div>
-            </div>
-            
-            
+            </Fragment>
             <ImageList :imageList="imageList"/>
         </main>
         <Footer />
-    </div>
+    </Fragment>
 </template>
 
 <script>

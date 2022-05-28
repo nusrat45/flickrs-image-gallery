@@ -15,6 +15,7 @@ const routes = [
     path: '/image/:id',
     name: 'imageDetails',
     component: ImageDetailsView,
+    //If id doesn't in route
     beforeEnter(to, from, next) {
       const exists = store.state.imageList.find(
         image => image.id == to.params.id
