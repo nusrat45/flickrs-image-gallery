@@ -1,4 +1,7 @@
 # flickrs-image-gallery
+It's a simple site for fecthing images flickers photo API. For some reason they didn't permit access in CORS policy that's you need to setup your chrome browser by doing this:
+1. window + run
+2. write "chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security" and run this
 
 ## Project setup
 ```
