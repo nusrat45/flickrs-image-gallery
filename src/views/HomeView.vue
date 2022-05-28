@@ -13,15 +13,22 @@
             </Dropdown>
         </Header>
         <main class="main">
-            <SearchByTag />
-            <div class="filter-sort">
-                <div class="filter-sort__filter">
-                    <FilterWithFav />
-                </div>
-                <div class="filter-sort__sort">
-                    <SortByDate />
+            <div v-if="isLoading">
+                <Loader />
+            </div>
+            <div v-else>
+                <SearchByTag />
+                <div class="filter-sort">
+                    <div class="filter-sort__filter">
+                        <FilterWithFav />
+                    </div>
+                    <div class="filter-sort__sort">
+                        <SortByDate />
+                    </div>
                 </div>
             </div>
+            
+            
             <ImageList :imageList="imageList"/>
         </main>
         <Footer />
@@ -36,22 +43,28 @@ import SortByDate from '../components/SortByDate.vue';
 import FilterWithFav from '@/components/FilterWithFav.vue';
 import Footer from '@/components/Footer.vue';
 import Dropdown from '@/components/Dropdown.vue';
+import Loader from '../components/Loader.vue';
 
 export default {
     name: "HomeView",
     components: {
-        ImageList,
-        Header,
-        SearchByTag,
-        Footer,
-        SortByDate,
-        FilterWithFav,
-        Dropdown
-    },
+    ImageList,
+    Header,
+    SearchByTag,
+    Footer,
+    SortByDate,
+    FilterWithFav,
+    Dropdown,
+    Loader
+},
 
     computed: {
         imageList() {
             return this.$store.state.imageList
+        },
+
+        isLoading() {
+            return this.$store.state.isLoading
         }
     },
 

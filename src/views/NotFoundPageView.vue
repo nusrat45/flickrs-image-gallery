@@ -2,14 +2,13 @@
     <Fragment>
         <Header></Header>
         <main class="main">
-            <div class="not-found-content">
-                <div class="not-found-content__center">
-                    <h1>Hmm!</h1>
-                    <p>It seems that you're lost</p>
-                    <p>Let us help guide you out and get you back home.</p>
-                    <router-link class="btn" to="/">Home</router-link>
-                </div>
-            </div>    
+            <FallBack :customTitle="`Hmm!`" :customText="`It seems like you're lost.`"/>
+            <FallBack>
+                <h1>Hmm!</h1>
+                <p>Look like you're lost.</p>
+                <p>The page you're looking for is not available :(</p>
+                <router-link class="btn" to="/">Go to Home</router-link>
+            </FallBack>
         </main>
         <Footer></Footer>
     </Fragment>
@@ -17,8 +16,9 @@
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import FallBack from '@/components/FallBack.vue';
 export default {
     name: 'NotFoundPageView',
-    components: { Header, Footer }
+    components: { Header, Footer, FallBack }
 }
 </script>

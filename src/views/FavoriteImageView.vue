@@ -2,12 +2,22 @@
     <Fragment>
         <Header />
         <main class="main">
-            <div class="filter-sort">
-                <div class="filter-sort__filter">
-                    <FilterWithFav />
+            <div v-if="favoriteImageList.length > 0">
+                <div class="filter-sort">
+                    <div class="filter-sort__filter">
+                        <FilterWithFav />
+                    </div>
                 </div>
+                <ImageList :imageList="favoriteImageList"/>  
             </div>
-            <ImageList :imageList="favoriteImageList"/>  
+            <div v-else>
+                <FallBack>
+                    <h1>Hey!</h1>
+                    <p>No Favourites Available.</p>
+                    <p>Go back to all images and add some favourites :)</p>
+                    <router-link class="btn" to="/">All Images</router-link>
+                </FallBack>
+            </div>
         </main>
         <Footer />
     </Fragment>
@@ -20,17 +30,19 @@ import SearchByTag from '@/components/SearchByTag.vue';
 import SortByDate from '../components/SortByDate.vue';
 import FilterWithFav from '@/components/FilterWithFav.vue';
 import Footer from '@/components/Footer.vue';
+import FallBack from '@/components/FallBack.vue';
 
 export default {
     name: "FavoriteImageView",
     components: {
-        ImageList,
-        Header,
-        SearchByTag,
-        Footer,
-        SortByDate,
-        FilterWithFav
-    },
+    ImageList,
+    Header,
+    SearchByTag,
+    Footer,
+    SortByDate,
+    FilterWithFav,
+    FallBack
+},
 
     computed: {
         favoriteImageList() {

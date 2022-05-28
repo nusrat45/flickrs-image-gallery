@@ -1,6 +1,6 @@
 <template>
     <Fragment>
-        <div class="image-list" v-if="imageList.length > 0">
+        <div class="image-list">
             <div class="image-list__image-holder" v-for="(image, index) in imageList" :key="image.author_id + index">
                 <router-link :to="{ name: 'imageDetails', params: {id: image.id, ...image}}">
                     <span class="image-list__view-wrapper">
@@ -10,10 +10,10 @@
                 <div class="image-list__image-caption"><i :class="image.isFavourite && 'is-favourite'" @click="updateFavouriteImageListOnClick($event, image)" class="fas fa-heart"></i></div>
             </div> 
         </div>
-         <div v-else class="fallback-image-holder">
+         <!-- <div v-else class="fallback-image-holder">
             <img src="../assets/images/fallback_image.jpg"/>
             <div>No Image Availabe</div>
-        </div>  
+        </div>   -->
     </Fragment>
 </template>
 

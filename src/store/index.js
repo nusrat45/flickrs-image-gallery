@@ -4,6 +4,7 @@ import { arrayRemove, convertRawtoDefinedImageList, findAndReplaceArrayOfObj, ST
 
 export default createStore({
   state: {
+    isLoading: true,
     imageList: [],
     allImageList: [],
     favoriteImageList: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
@@ -84,6 +85,7 @@ export default createStore({
       .then(response => context.state.allImageList = convertRawtoDefinedImageList(response.data.items))
       .then(() => context.state.imageList = findAndReplaceArrayOfObj(context.state.allImageList, context.state.favoriteImageList, 'id'))
       .then(() => context.commit('sortByDate', 'date_taken_raw'))
+      .then(() => context.state.isLoading = false)
     },
 
 
