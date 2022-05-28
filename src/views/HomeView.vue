@@ -21,9 +21,9 @@
 import ImageList from '@/components/ImageList.vue';
 import Header from '@/components/Header.vue';
 import SearchByTag from '@/components/SearchByTag.vue';
-import Footer from '@/components/Footer.vue';
 import SortByDate from '../components/SortByDate.vue';
 import FilterWithFav from '@/components/FilterWithFav.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
     name: "HomeView",

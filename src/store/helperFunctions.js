@@ -6,6 +6,7 @@ export function convertRawtoDefinedImageList(rawImageList) {
   
     rawImageList.forEach((rawImage, index) => {
         let definedImage = {};
+        definedImage['id'] = createUniqueId(rawImage.link)
         definedImage['img_src'] = rawImage.media.m
         definedImage['title'] = rawImage.title
         definedImage['link'] = rawImage.link
@@ -40,4 +41,17 @@ export function  findAndReplaceArrayOfObj(arr1, arr2, objProp) {
       return fullObj ? fullObj : itemA;
     });
     return newArr;
+}
+
+function createUniqueId(str) {
+    let id = ''
+
+    let clippedStr = 'https://www.flickr.com/photos/';
+    
+    let indexClippedStr = str.indexOf(clippedStr) + clippedStr.length;
+
+    id = str.substring(indexClippedStr + 1).replaceAll('/', '');
+
+    return id;
+
 }

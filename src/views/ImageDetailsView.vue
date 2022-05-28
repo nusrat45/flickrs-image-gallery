@@ -9,7 +9,7 @@
                     <div class="image-details__text">
                         <div class="image-details__image-properties">
                                 <h1 class="image-details__item">{{image.title.trim() ? image.title : 'No Title Available'}}</h1>
-                                <div class="image-details__item">{{image.description ? image.description : ''}}</div>
+                                <!-- <div class="image-details__item">{{image.description ? image.description : ''}}</div> -->
                                 <div class="image-details__item">Taken By: {{image.author ? image.author : 'No Author Available'}}</div>
                                 <div class="image-details__item">Taken On: {{image.date_taken ? image.date_taken : 'No Date Avaiable'}}</div>
                                 <div class="image-details__item">Published On: {{image.published ? image.published : 'No Date Avaiable'}}</div>

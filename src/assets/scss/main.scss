@@ -1,4 +1,5 @@
 @import url('./base/_global.scss');
+@import url('./base/_functions.scss');
 @import url('./components/header.scss');
 @import url('./components/searchbytag.scss');
 @import url('./components/imageList.scss');
@@ -7,5 +8,6 @@
 @import url('./components/dropdown.scss');
 @import url('./pages/homeview.scss');
 @import url('./pages/imageDetailsView.scss');
+@import url('./pages/notfoundview.scss');
 @import url('./base/_modifier.scss');
 

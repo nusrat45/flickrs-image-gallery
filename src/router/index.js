@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ImageDetailsView from '../views/ImageDetailsView.vue'
 import FavoriteImageView from '../views/FavoriteImageView.vue'
 import NotFoundPageView from '../views/NotFoundPageView.vue'
+import store from '@/store'
 
 const routes = [
   {
@@ -11,9 +12,18 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/images/:id',
+    path: '/image/:id',
     name: 'imageDetails',
     component: ImageDetailsView,
+    beforeEnter(to, from, next) {
+      const exists = store.state.imageList.find(
+        image => image.id == to.params.id
+      )
+      if (!exists) {
+        next({ name: 'NotFoundPageView' });
+      }
+      next();
+    },  
     props: true
   },
 
@@ -35,9 +45,9 @@ const routes = [
     redirect: '/'
   },
   
-  // 404 page
+  //404 page
   {
-    path: '/:catchAll(.*)',
+    path: '/:catchAll(.*)*',
     name: 'NotFoundPageView',
     component: NotFoundPageView,
   },

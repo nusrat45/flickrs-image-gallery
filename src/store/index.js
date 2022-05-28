@@ -31,7 +31,7 @@ export default createStore({
           state.favoriteImageList.push(image)
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state.favoriteImageList))
       } else {
-          state.favoriteImageList = arrayRemove(state.favoriteImageList, image, 'author_id')
+          state.favoriteImageList = arrayRemove(state.favoriteImageList, image, 'id')
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state.favoriteImageList))
       }
     },
@@ -65,10 +65,7 @@ export default createStore({
   },
 
   actions: {
-    getImages(context, payload) {
-
-      console.log('payload from get api: ', payload)
-      
+    getImages({state, getters, commit, dispatch}, payload) {
       let url = ''
       
       if(payload) {
@@ -79,11 +76,10 @@ export default createStore({
         url = 'https://api.flickr.com/services/feeds/photos_public.gne?safe_search=1&format=json&nojsoncallback=1'
       }
 
-      console.log('url: ', url)
-
       axios(url)
-      .then(response => context.state.allImageList = convertRawtoDefinedImageList(response.data.items))
-      .then(() => context.state.imageList = findAndReplaceArrayOfObj(context.state.allImageList, context.state.favoriteImageList, 'link'))
+      .then(response => state.allImageList = convertRawtoDefinedImageList(response.data.items))
+      .then(() => state.imageList = findAndReplaceArrayOfObj(state.allImageList, state.favoriteImageList, 'id'))
+      .then(() => state.commit(state.imageList, 'date_taken_raw'))
     },
 
 
@@ -97,8 +93,5 @@ export default createStore({
       context.commit('handleTags', payload)
       context.dispatch('getImages', {tagmode: context.state.tagMode, tagparams: context.getters.tagsParam})
     }
-  },
-
-  modules: {
   }
 })

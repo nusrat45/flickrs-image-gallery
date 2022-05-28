@@ -1,7 +1,7 @@
+@use '../base/breakpoints' as bp;
 .sort-by-date {
     position: relative;
-    width: 150px;
-
+    
     &__name {
         width: 100%;
         padding-left: 0px;
@@ -13,42 +13,9 @@
             margin-left: 10px;
         }
     }
-    &__dropdown {
-        position: absolute;
-        width: 100%;
-        background-color: #2b3743;
-        left: 0px;
-        margin: 0px;
-        right: 50px;
-        z-index: 1;
-        overflow: hidden;
-        padding-bottom: 0px;
-    } 
-
-    &__dropdown-list {
-        list-style: none;
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    &__item {
-        font-size: 13px;
-        border-bottom: 1px solid #212e37;
-        padding: 10px 6px 10px 6px;
-        cursor: pointer;
-
-        &:first-child {
-            border-top: 1px solid #212e37;
-        }
-
-        &:hover {
-            background-color: #4d777d;
-        }
-    }
-
-    .close {
-        display: none;
+    
+    .dropdown {
+        margin: 5px 0px 0px 0px;
     }
 }
 

@@ -1,13 +1,14 @@
 <template lang="">
-    <label class="custom-select">
-        <select>
+    <label class="dropdown" :class="customClass">
+        <select @change="eventMethod($event)">
             <slot></slot>
         </select>
     </label>
 </template>
 <script>
 export default {
-    name: 'Dropdown'
+    name: 'Dropdown',
+    props:['eventMethod', 'customClass']
 }
 </script>
 <style lang="">

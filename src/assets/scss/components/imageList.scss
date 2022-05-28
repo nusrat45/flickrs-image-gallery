@@ -1,4 +1,5 @@
 @use '../base/variables' as var;
+@use '../base/breakpoints' as bp;
 
 .image-list {
     display: grid;
@@ -6,18 +7,51 @@
     grid-gap: 20px;
     width: calc(100% - 100px);
     margin: 0px auto 20px auto;
+   
+    @include bp.md {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include bp.sm {
+        width: calc(100% - 30px);
+        grid-gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include bp.xs {
+        grid-template-columns: repeat(1, 1fr);
+    }
 
     &__image-holder {
         cursor: pointer;
         position: relative;
         display: inline-block;
+    }
 
+    &__view-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
         &:hover {
-            box-shadow: var.$hovshadow;
+            &::after {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                content: 'View';
+                text-align: center;
+                color: var.$white;
+                background-color: rgba(0, 0, 0, 0.9); 
+            }
         }
     }
 
     &__image-link {
+        position: relative;
         width: 100%;
         height: 200px;
         object-fit: cover;
@@ -49,5 +83,4 @@
         width: 350px;
     }
 }
-
 

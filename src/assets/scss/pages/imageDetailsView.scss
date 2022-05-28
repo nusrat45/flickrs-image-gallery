@@ -1,4 +1,5 @@
 @use '../base/variables' as var;
+@use '../base/breakpoints' as bp;
 
 .image-details {
     width: calc(100% - 100px);
@@ -18,15 +19,26 @@
         }
     }
 
-    
-
     &__main-content {
         display: flex;
+
+        @include bp.md {
+            flex-direction: column;
+        }
     }
     
     &__img {
         width: 35%;
         max-height: 400px;
+        
+        @include bp.md {
+            width: calc(100% - 100px);
+            max-height: 250px;
+        }
+
+        @include bp.sm {
+            width: calc(100% - 50px);
+        }
     }
     
     &__text {
@@ -34,6 +46,11 @@
         flex-direction: column;
         width: 50%;
         margin-left: 20px;
+
+        @include bp.md {
+            width: calc(100% - 50px);
+            margin-left: 0px;
+        }
     }
     
     &__image-properties {

@@ -1,17 +1,9 @@
 <template>
     <div className="search-by-tag">
-        <!-- <span class="btn is-checked" @click="getImages">All Tags</span> -->
-        <!-- <Dropdown>
-            <option>All</option>
-            <option>Any</option>
-        </Dropdown> -->
-        <label class="custom-select">
-            <span>Tagmode: </span>
-            <select @change="getImagesOnTagMode($event)">
-                <option value="all">All</option>
-                <option value="any">Any</option>
-            </select>
-        </label>
+        <Dropdown :eventMethod="getImagesOnTagMode">
+            <option class="item" value="all">All</option>
+            <option value="any">Any</option>
+        </Dropdown>
         <span v-if="tags.length > 0">
             <span v-for="(tag, index) in tags" 
                 :key="index"
@@ -43,9 +35,7 @@ export default {
     data() {
         return {
             tagName: "",
-            isShow: false,
-            options: [
-                    {_title: 'All', _event: ['getImages']}, {_title: 'Any', _event:['getImages']}]
+            isShow: false
         };
     },
     computed: {
