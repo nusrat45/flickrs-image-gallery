@@ -65,21 +65,25 @@ export default createStore({
   },
 
   actions: {
-    getImages({state, getters, commit, dispatch}, payload) {
+    getImages(context, payload) {
       let url = ''
       
       if(payload) {
+        console.log(payload.lang)
         let tagsQuery = payload.tagparams ? `tags=${payload.tagparams}&` : '';
         let tagModeQuery = payload.tagmode ? `tagmode=${payload.tagmode}&` : '';
-        url = 'https://api.flickr.com/services/feeds/photos_public.gne?'+tagsQuery+tagModeQuery+'safe_search=1&format=json&nojsoncallback=1'
+        let langQuery = payload.lang ? `lang=${payload.lang}&` : '';
+        url = 'https://api.flickr.com/services/feeds/photos_public.gne?'+tagsQuery+tagModeQuery+langQuery+'safe_search=1&format=json&nojsoncallback=1'
       } else {
         url = 'https://api.flickr.com/services/feeds/photos_public.gne?safe_search=1&format=json&nojsoncallback=1'
       }
 
+      console.log('url: ', url)
+
       axios(url)
-      .then(response => state.allImageList = convertRawtoDefinedImageList(response.data.items))
-      .then(() => state.imageList = findAndReplaceArrayOfObj(state.allImageList, state.favoriteImageList, 'id'))
-      .then(() => state.commit(state.imageList, 'date_taken_raw'))
+      .then(response => context.state.allImageList = convertRawtoDefinedImageList(response.data.items))
+      .then(() => context.state.imageList = findAndReplaceArrayOfObj(context.state.allImageList, context.state.favoriteImageList, 'id'))
+      .then(() => context.commit('sortByDate', 'date_taken_raw'))
     },
 
 

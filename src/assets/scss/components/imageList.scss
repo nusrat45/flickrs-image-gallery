@@ -35,18 +35,23 @@
         &:hover {
             &::after {
                 position: absolute;
-                left: 0;
-                top: 0;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 100%;
-                height: 100%;
-                content: 'View';
+                width: 50%;
+                height: 20%;
+                content: 'View Details';
                 text-align: center;
                 color: var.$white;
-                background-color: rgba(0, 0, 0, 0.9); 
+                background-color: var.$bismark; 
             }
+        }
+
+        &:hover .image-list__image-link {
+            opacity: 0.2;
         }
     }
 
@@ -55,6 +60,9 @@
         width: 100%;
         height: 200px;
         object-fit: cover;
+        &:hover {
+            opacity: 0.2;
+        }
     }
 
     &__image-caption {

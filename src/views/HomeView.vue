@@ -1,6 +1,17 @@
 <template>
     <div>
-        <Header />
+        <Header>
+            <Dropdown :eventMethod="getImagesByLang">
+                <option value="en-us">English</option>
+                <option value="fr-fr">French</option>
+                <option value="de-de">German</option>
+                <option value="it-it">Italian</option>
+                <option value="ko-kr">Korean</option>
+                <option value="pt-br">Portuguese</option>
+                <option value="es-us">Spanish</option>
+                <option value="zh-hk">Chinese</option>
+            </Dropdown>
+        </Header>
         <main class="main">
             <SearchByTag />
             <div class="filter-sort">
@@ -11,7 +22,7 @@
                     <SortByDate />
                 </div>
             </div>
-            <ImageList :imageList="$store.state.imageList"/>
+            <ImageList :imageList="imageList"/>
         </main>
         <Footer />
     </div>
@@ -24,6 +35,7 @@ import SearchByTag from '@/components/SearchByTag.vue';
 import SortByDate from '../components/SortByDate.vue';
 import FilterWithFav from '@/components/FilterWithFav.vue';
 import Footer from '@/components/Footer.vue';
+import Dropdown from '@/components/Dropdown.vue';
 
 export default {
     name: "HomeView",
@@ -33,7 +45,20 @@ export default {
         SearchByTag,
         Footer,
         SortByDate,
-        FilterWithFav
+        FilterWithFav,
+        Dropdown
+    },
+
+    computed: {
+        imageList() {
+            return this.$store.state.imageList
+        }
+    },
+
+    methods: {
+        getImagesByLang(event) {
+            this.$store.dispatch('getImages', {lang: event.target.value})
+        }
     }
 }
 </script>
